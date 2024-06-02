@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Portfolio</title>
+    <style>
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #f9f9f9;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        document.getElementById("mobileNavToggle").addEventListener("click", function () {
+            document.querySelector(".nav-list").classList.toggle("show");
+        });
+        document.getElementById("mobileNavToggle").addEventListener("click", function () {
+            document.querySelector("header").classList.toggle("open");
+        });
+        const toggleButton = document.getElementById("mobileNavToggle");
+        const lines = toggleButton.querySelectorAll(".line");
+
+        toggleButton.addEventListener("click", () => {
+            lines.forEach(line => line.classList.toggle("open"));
+        });
+    </script>
+    <script>
+        const cardsContainer = document.querySelector('.container.scroll-1');
+        const dotsContainer = document.querySelector('.dots-container');
+
+        // Create dots based on the number of cards
+        for (let i = 0; i < cardsContainer.children.length; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dotsContainer.appendChild(dot);
+
+            // Add event listener to scroll to corresponding card when dot is clicked
+            dot.addEventListener('click', () => {
+                cardsContainer.scrollTo({
+                    left: cardsContainer.children[i].offsetLeft,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Track the active card and update active dot
+        cardsContainer.addEventListener('scroll', () => {
+            const scrollLeft = cardsContainer.scrollLeft;
+            for (let i = 0; i <= cardsContainer.children.length; i++) {
+                if (scrollLeft >= cardsContainer.children[i].offsetLeft) {
+                    dotsContainer.children[i].classList.add('active');
+                    for (let j = 0; j < i; j++) {
+                        dotsContainer.children[j].classList.remove('active');
+                    }
+                }
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <div>
+           <a href="http://127.0.0.1:5500/My_RS200.html"> <img src="SJ.png" alt="logo"> </a> 
+        </div>
+        <div class="head-nav">
+            <nav>
+                <div class="mobile-nav-button">
+                    <button id="mobileNavToggle" aria-label="Toggle Navigation">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#project">Project</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+
+            <div class="header">
+                <h1 class="itl">Hello There</h1>
+                <h1 class="httl">I'm Sarang Jamdar,</h1>
+                <h2>An aspiring programmer and IT enthusiast.</h2>
+                <p>Aspiring Programmer | IT Enthusiast | Creating Digital Solutions with Code</p>
+                <div class="home-opt">
+                    <a href="#project" class="glowing-button">Projects</a>
+                    <a href="#about" class="glowing-button">About Me</a>
+                </div>
+            </div>
+            <div class="profile">
+               <a href="https://www.bmw-motorrad.in/en/models/sport/s1000rr.html"> <img src="pngwing.com.png" alt=""> </a> 
+            </div>
+            <div class="home-social">
+                <a href="https://github.com/SarangJamdar" target="_blank"><i class="fab fa-github fa-lg" style="color: #ffffff;"></i></a>
+                <a href="https://www.instagram.com/sa__rang24/" target="_blank"><i class="fab fa-instagram fa-lg"
+                        style="color: #ffffff;"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-lg" style="color: #ffffff;"></i></a>
+                <a href="#"><i class="fab fa-linkedin fa-lg" style="color: #ffffff;"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-lg" style="color: #ffffff;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="project">
+        <main class="promain">
+            <div class="protitle">
+                <h2 class="itl">Project</h2>
+                <p>From Ideas to Reality: <br>Showcasing My Projects</p>
+            </div>
+            <div class="container scroll-1">
+                <div class="card">
+                    <div class="card__image">
+                        <div class="tlt">
+                            <div class="card__title">
+                                <h3>API <br> OrganizationSystem </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__content">
+                        <p class="card__describe">
+                            Developed a Spring Boot
+                            CRUD application with restful API for
+                            storeing data of employee into database,
+                            <hr>
+                            Technologies Used: Java, Spring Boot,
+                            Hibernate, MySQL.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image">
+                        <div class="tlt">
+                            <div class="card__title">
+                                <h3>CRUD <br> Student Attendance Management System</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__content">
+                        <p class="card__describe">
+                            This is my first project in java. After exploring the java and spring boot framework, I
+                            implemented core java knowledge along with spring boot to create a CRUD web application. In
+                            this project I create a student database with its attributes which are directly taken from
+                            database. In this project I use HTML, CSS, Core JAVA and Spring boot. In Spring boot I use
+                            dependacies which are JPA, Thymeleaf, MySQL Connector etc.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image">
+                        <div class="tlt">
+                            <div class="card__title">
+                                <h3>Weather App <br> Weather Application with Weather API</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__content">
+                        <p class="card__describe">
+                            Description: Developed a weather
+                            application using HTML, CSS, and
+                            JavaScript, integrating data from the
+                            OpenWeather API.
+                            Frontend development using HTML,
+                            CSS, and JavaScript
+                            User interface design and
+                            responsiveness for enhanced user
+                            experience. 
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image">
+                        <div class="tlt">
+                            <div class="card__title">
+                                <h3>ROBOT <br> Obstacle Detection & Avoiding Robot</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__content">
+                        <p class="card__describe">
+                            This is my college project and it was a event project, the main objective of the project was
+                            to create a robot which is capabale of detection of obstacle in its path. For obstacle
+                            detection we use ultrasonic sensor. It alos has smoke detection sensor and buzzer. The entire system was controlled by the Arduino Uno 3 and
+                            the motors where controlled by motor driver. The whole system is battery operated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="dots-container">
+                <!-- Dots will be dynamically generated here -->
+            </div>
+
+
+        </main>
+    </section>
+
+    <section id="about">
+        <main class="about-main">
+            <h2 class="itl">About Me</h2>
+            <div class="details">
+                <p>Welcome to my portfolio! <br>
+                    I am a fresher with a strong passion for programming and a keen interest in
+                    the IT industry.
+                    My journey in the world of technology has been an exciting one, filled with continuous
+                    learning and exploration.</p>
+            </div>
+            <br>
+            <h2 class="hskill">My Skills</h2>
+            <div class="skill">
+                <div class="containerskill">
+                    <div class="cardskill">
+                        <h2>Frontend</h2>
+                        <p>Showcasing skills related to HTML, CSS for creating user interfaces.</p>
+                    </div>
+                    <div class="cardskill">
+                        <h2>Backend</h2>
+                        <p>Showcasing skills related to server-side programming using language JAVA.</p>
+                    </div>
+                    <div class="cardskill">
+                        <h2>Framework</h2>
+                        <p>Showcasing skills related to using framework like Springboot for
+                            efficient development.</p>
+                    </div>
+                    <div class="cardskill">
+                        <h2>Database</h2>
+                        <p>Showcasing skills related to Database using DBMS like MySQL for
+                            efficient data management.</p>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="btdwn">
+                <a href="SARANG_JAMDAR_8459046850.pdf" download><button class="bttn"> Download Resume </button></a>
+            </div>
+
+        </main>
+    </section>
+
+    <section id="contact">
+        <h2 class="itl">Contact Me</h2>
+        <p>Feel free to get in touch with me!</p>
+
+        <div class="cont">
+            <div class="contact-form">
+                <form id="contact-form"
+                    action="https://forms.un-static.com/forms/98a9d5915254ed2cec30fac224a16792a0d300ce" method="POST">
+                    <fieldset>
+                        <div>
+                            <input type="text" name="name" id="name" placeholder="Name">
+                        </div>
+                        <div>
+                            <input type="text" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div>
+                            <input type="text" name="subject" id="subject" placeholder="Subject">
+                        </div>
+                        <div>
+                            <textarea id="message" name="message" cols="50" rows="5"
+                                placeholder="How Can I Help You!"></textarea>
+                        </div>
+                        <button class="glowing-btn2" type="submit">Submit</button>
+                    </fieldset>
+                </form>
+
+            </div>
+
+            <div class="contact-section">
+
+                <div class="contact-details">
+
+                    <div class="contact-details-tlt">
+                        <p>Email</p>
+                        <p>Phone</p>
+                        <p>Location</p>
+                    </div>
+                    <div class="contact-details-data">
+                        <p>: sarangsjamdargmail.com</p>
+                        <p>: +91 8459046850</p>
+                        <p>: Pune, India</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="none">
+            <h3>connect with me</h3>
+        </div>
+        <div class="cont-social">
+            <a href="https://github.com/SarangJamdar"><i class="fab fa-github fa-lg" style="color: #ffffff;"></i></a>
+            <a href="https://www.instagram.com/sa__rang24/" target="_blank"><i class="fab fa-instagram fa-lg"
+                    style="color: #ffffff;"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg" style="color: #ffffff;"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-lg" style="color: #ffffff;"></i></a>
+            <a href="#"><i class="fab fa-facebook fa-lg" style="color: #ffffff;"></i></a>
+        </div>
+        <footer>
+            <p>&copy; 2024 Sarang S Jamdar. All rights reserved.</p>
+        </footer>
+    </section>
+
+</body>
+
+</html>
